@@ -1,0 +1,19 @@
+{
+    "name": "mario/app-salon-mvc",
+    "description": "Proyecto PHP 8, MVC, Gulp, Sass",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models"
+        }
+    },
+    "authors": [
+        {
+            "name": "maibarra0904",
+            "email": "mario.ibarra.86@gmail.com"
+        }
+    ],
+    "require": {}
+}
