@@ -3,7 +3,7 @@ namespace Model;
 class ActiveRecord {
 
     // Base DE DATOS
-    protected static $id;
+    public $id;
     protected static $db;
     protected static $tabla = '';
     protected static $columnasDB = [];
