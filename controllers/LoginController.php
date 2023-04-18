@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Classes\Email;
 use Model\Usuario;
 use MVC\Router;
 
@@ -43,7 +44,19 @@ class LoginController {
                 if($resultado->num_rows) {
                     $alertas = Usuario::getAlertas();
                 } else {
-                    
+                    //Hashear el password
+                    $usuario->hashPassword();
+
+                    //Generar un token único
+                    $usuario->crearToken();
+
+                    //Enviar email
+                    $email = new Email($usuario->email,$usuario->nombre,$usuario->token);
+
+                    $email->enviarConfirmacion();
+
+                    debuguear($usuario);
+
                 }
             }
 
