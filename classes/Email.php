@@ -39,7 +39,7 @@ class Email {
         $contenido = "<html>";
         $contenido .= "<p>Hola <strong> " . $this->nombre . "</strong>. Este es el proceso de creación de tu cuenta en App Salón.</p>";
         $contenido .= "<p>Para confirmar la cuenta presiona el siguiente <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token ."'>
-        Enlace</a></p>";
+        enlace</a></p>";
         $contenido .= "<p>Si tu no solicitaste esta cuenta, ignora éste mensaje.</p>";
         $contenido .= "</html>";
 

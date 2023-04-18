@@ -55,7 +55,12 @@ class LoginController {
 
                     $email->enviarConfirmacion();
 
-                    debuguear($usuario);
+                    //Crear el usuario
+                    $resultado = $usuario->guardar();
+
+                    if($resultado) {
+                        header('Location: /mensaje');
+                    }
 
                 }
             }
@@ -66,5 +71,39 @@ class LoginController {
             'usuario' => $usuario,
             'alertas' => $alertas
         ]);
+    }
+
+    public static function mensaje(Router $router) {
+        $router->render('auth/mensaje');
+    }
+
+    public static function confirmar(Router $router) {
+
+        $alertas=[];
+
+        $token = s($_GET['token']);
+
+        $usuario = Usuario::where('token',$token.' ');
+
+        if(empty($usuario)) {
+            //Mostrar mensaje de error
+            Usuario::setAlerta('error', 'Token No Válido');
+
+        } else {
+            //Cambiar a usuario confirmado
+            $usuario->confirmado = 1;
+            $usuario->token = null;
+            $usuario->guardar();
+            Usuario::setAlerta('exito', 'Cuenta Comprobada Correctamente');
+
+            //debuguear($usuario);
+        }
+        
+        $alertas = Usuario::getAlertas();
+        $router->render('auth/confirmar-cuenta', [
+            'alertas' => $alertas
+        ]);
+
+        
     }
 }
