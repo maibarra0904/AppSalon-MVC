@@ -8,8 +8,49 @@ use MVC\Router;
 
 class LoginController {
     public static function login(Router $router) {
-        
-        $router->render('auth/login');
+        $alertas= [];
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $auth = new Usuario($_POST);
+            $alertas = $auth->validarLogin();
+            if(empty($alertas)) {
+                //Comprobación que el usuario existe
+                $usuario = Usuario::where('email', $auth->email);
+
+                if($usuario) {
+                    //Verifica el password
+                    if($usuario->comprobarPasswordAndVerificado($auth->password)) {
+                        //Autenticar usuario
+                        session_start();
+
+                        $_SESSION['id'] = $usuario->id;
+                        $_SESSION['nombre'] = $usuario->nombre . " " . $usuario->apellido;
+                        $_SESSION['email'] = $usuario->email;
+                        $_SESSION['login'] = true;
+
+
+                        if($usuario->admin === "1") {
+                            $_SESSION['admin'] = $usuario->admin ?? null;
+                            header('Location: /admin');
+                        } else {
+                            header('Location: /cita');
+                        }
+
+                        
+                    };
+
+                } else {
+                    Usuario::setAlerta('error', 'El usuario no existe o password no coincide');
+                }
+
+            }
+        }
+
+        $alertas = Usuario::getAlertas();
+
+        $router->render('auth/login', [
+            'alertas' => $alertas
+        ]);
     }
 
     public static function logout() {
