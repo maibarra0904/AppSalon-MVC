@@ -36,14 +36,14 @@
             </div>
             <div class="campo">
                 <label for="hora">Hora</label>
-                <input type="time" id="hora" name="hora">
+                <input type="time" id="hora" name="hora" step="600">
                 <script>
                 
                 </script>
             </div>
         </form>
     </div>
-    <div class="ocultar" id="paso-3">
+    <div class="ocultar contenido-resumen" id="paso-3">
         <h2>Resumen</h2>
         <p>Verifica que la información sea correcta</p>
     </div>
