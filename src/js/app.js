@@ -1,4 +1,4 @@
-const { resume } = require("browser-sync");
+//const { resume } = require("browser-sync");
 
 let paso = 1, pasoInicial = 1, pasoFinal = 4;
 
