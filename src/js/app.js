@@ -1,8 +1,7 @@
-//const { resume } = require("browser-sync");
-
 let paso = 1, pasoInicial = 1, pasoFinal = 4;
 
 const cita = {
+    id: '',
     nombre: '',
     fecha: '',
     hora: '',
@@ -19,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     consultarAPI();
 
+    idCliente();
     nombreCliente(); // Añade el nombre del cliente al objeto de la cita
     seleccionarFecha(); //Agrega la fecha al objeto cita
     seleccionarHora();
@@ -192,6 +192,10 @@ function seleccionarServicio(servicio) {
 
 }
 
+function idCliente() {
+    cita.id = document.querySelector('#id').value;
+}
+
 function nombreCliente() {
     cita.nombre = document.querySelector('#nombre').value;
 }
@@ -344,9 +348,53 @@ function mostrarResumen() {
     resumen.appendChild(fechaCita);
     resumen.appendChild(horaCita);
 
-    resume.appendChild(botonReservar);
+    resumen.appendChild(botonReservar);
 }
 
-function reservarCita() {
+async function reservarCita() {
+    const {id, fecha, hora, servicios} = cita;
 
+    const idServicios = servicios.map(servicio => servicio.id);
+
+    const datos = new FormData();
+    
+    datos.append('fecha', fecha);
+    datos.append('hora', hora);
+    datos.append('usuarioId', id);
+    datos.append('servicios', idServicios);
+    //console.log([...datos]); //Inspeccionar la data que está en formdata antes de enviarla
+
+    try {
+        //Peticion hacia la api
+        const url = 'http://localhost:3000/api/citas';
+
+        const respuesta = await fetch (url, {
+            method: 'POST',
+            body: datos
+        });
+
+        const resultado = await respuesta.json();
+
+        if(resultado.resultado) {
+            swal({
+                title: "Gracias!",
+                text: "Tu cita ha sido creada correctamente!",
+                icon: "success",
+                button: "Cerrar",
+            }).then(() => {
+                setTimeout(() => {
+                    window.location.reload();    
+                }, 3000);
+            })
+        }
+    } catch (error) {
+        swal({
+            icon: "error",
+            title: "Error",
+            text: "Hubo un error al guardar la cita"
+        })
+    }
+
+
+    
 }

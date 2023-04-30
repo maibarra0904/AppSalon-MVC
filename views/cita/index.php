@@ -41,6 +41,7 @@
                 
                 </script>
             </div>
+            <input type="hidden" id="id" value="<?php echo $id; ?>">
         </form>
     </div>
     <div class="ocultar contenido-resumen" id="paso-3">
@@ -58,6 +59,7 @@
 
 <?php
     $script = "
+        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
         <script src='build/js/app.js'></script>
     ";
 ?>
