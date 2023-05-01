@@ -144,6 +144,11 @@ class ActiveRecord {
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
 
+        //Esta línea impide sirve para debuggear el query para ello en inspeccionar,
+        //ir al apartado de Red, seleccionar Fetch/XHR y cuando se vaya a enviar la información
+        //del FormData, en lugar de enviarla pasará la información que se pretende enviar
+        //return json_encode(['query' => $query]);
+
         // Resultado de la consulta
         $resultado = self::$db->query($query);
         return [

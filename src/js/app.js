@@ -374,7 +374,7 @@ async function reservarCita() {
         });
 
         const resultado = await respuesta.json();
-
+        
         if(resultado.resultado) {
             swal({
                 title: "Gracias!",
@@ -384,7 +384,7 @@ async function reservarCita() {
             }).then(() => {
                 setTimeout(() => {
                     window.location.reload();    
-                }, 3000);
+                }, 500);
             })
         }
     } catch (error) {

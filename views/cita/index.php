@@ -1,6 +1,13 @@
+<div class="barra">
+    <p>Hola, <?php echo $nombre ?? '' ?></p>
+    <a href="/logout" class="boton">Cerrar Sesión</a>
+</div>
+
 <h1 class="nombre-pagina">Crear nueva cita</h1>
 
 <p class="descripcion-pagina">Elige tus servicios a continuación</p>
+
+
 
 <div id="app">
 
