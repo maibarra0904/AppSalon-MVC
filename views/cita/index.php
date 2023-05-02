@@ -1,7 +1,6 @@
-<div class="barra">
-    <p>Hola, <?php echo $nombre ?? '' ?></p>
-    <a href="/logout" class="boton">Cerrar Sesión</a>
-</div>
+<?php
+    include_once __DIR__ . '/../templates/barra.php';
+?>
 
 <h1 class="nombre-pagina">Crear nueva cita</h1>
 
