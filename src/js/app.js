@@ -394,7 +394,6 @@ async function reservarCita() {
             text: "Hubo un error al guardar la cita"
         })
     }
-
-
     
 }
+
