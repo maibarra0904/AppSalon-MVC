@@ -136,7 +136,7 @@ function paginaAnterior(){
 async function consultarAPI() {
 
     try {
-        const url = 'http://localhost:3000/api/servicios';
+        const url = 'https://guarded-basin-94163.herokuapp.com/api/servicios';
         const resultado = await fetch(url);
         const servicios = await resultado.json();
         mostrarServicios(servicios);

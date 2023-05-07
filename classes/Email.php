@@ -38,7 +38,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p>Hola <strong> " . $this->nombre . "</strong>. Este es el proceso de creación de tu cuenta en App Salón.</p>";
-        $contenido .= "<p>Para confirmar la cuenta presiona el siguiente <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token ."'>
+        $contenido .= "<p>Para confirmar la cuenta presiona el siguiente <a href='https://guarded-basin-94163.herokuapp.com/confirmar-cuenta?token=" . $this->token ."'>
         enlace</a></p>";
         $contenido .= "<p>Si tu no solicitaste esta cuenta, ignora éste mensaje.</p>";
         $contenido .= "</html>";
@@ -70,7 +70,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p>Hola <strong> " . $this->nombre . "</strong>. Has solicitado restablecer el password de tu cuenta en App Salón.</p>";
-        $contenido .= "<p>Para restablecerlo presiona el siguiente <a href='http://localhost:3000/recuperar?token=" . $this->token ."'>
+        $contenido .= "<p>Para restablecerlo presiona el siguiente <a href='https://guarded-basin-94163.herokuapp.com/recuperar?token=" . $this->token ."'>
         enlace</a></p>";
         $contenido .= "<p>Si tu no lo solicitaste, ignora éste mensaje.</p>";
         $contenido .= "</html>";
