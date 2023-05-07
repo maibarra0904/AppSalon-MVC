@@ -366,7 +366,7 @@ async function reservarCita() {
 
     try {
         //Peticion hacia la api
-        const url = 'http://localhost:3000/api/citas';
+        const url = 'https://guarded-basin-94163.herokuapp.com/api/citas';
 
         const respuesta = await fetch (url, {
             method: 'POST',
