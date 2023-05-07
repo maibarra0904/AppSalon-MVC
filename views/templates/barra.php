@@ -5,19 +5,19 @@
 
 <?php
     if(isset($_SESSION['admin'])) {
-        //debuguear($_SERVER['PATH_INFO']==='/admin');
+        debuguear($_SERVER);
 ?>
 
         <div class="barra-servicios">
-            <?php if($_SERVER['PATH_INFO']==='/servicios' || $_SERVER['PATH_INFO']==='/servicios/crear') { ?> 
+            <?php if($_SERVER['REQUEST_URI']==='/servicios' || $_SERVER['REQUEST_URI']==='/servicios/crear') { ?> 
                 <a class="boton" href="/admin">Ver Citas</a> 
             <?php }; ?>
 
-            <?php if($_SERVER['PATH_INFO']==='/admin' || $_SERVER['PATH_INFO']==='/servicios/crear') { ?>
+            <?php if($_SERVER['REQUEST_URI']==='/admin' || $_SERVER['REQUEST_URI']==='/servicios/crear') { ?>
                 <a class="boton" href="/servicios">Ver Servicios</a>
             <?php }; ?>
 
-            <?php if($_SERVER['PATH_INFO']==='/admin' || $_SERVER['PATH_INFO']==='/servicios') { ?>
+            <?php if($_SERVER['REQUEST_URI']==='/admin' || $_SERVER['REQUEST_URI']==='/servicios') { ?>
                 <a class="boton" href="/servicios/crear">Nuevo Servicio</a>
             <?php }; ?>
         </div>
