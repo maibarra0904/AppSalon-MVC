@@ -5,7 +5,7 @@
 
 <?php
     if(isset($_SESSION['admin'])) {
-        debuguear($_SERVER);
+        //debuguear($_SERVER);
 ?>
 
         <div class="barra-servicios">
